@@ -23,13 +23,13 @@ class Hangman():
                 for index in right_letter:
                     self.correctly_guessed_letters[index] = guess.upper()
                     self.turn_count += 1
-
+            # COACHES' NOTE: Subdividing into a few more functions could have avoided this 'floating' else statement. Hard to follow the logic this way.
             else:
                 self.wrongly_guessed_letters.append( guess )
                 self.error_count += 1
                 self.lives -= 1
                 self.turn_count += 1
-
+        # COACHES' NOTE: This else statement is not needed if you return out of the function in your if statement.
         else:
             print( "Only one letter and/or only letter" )
             self.play()
@@ -39,6 +39,7 @@ class Hangman():
         self.word_to_find = list( self.possible_words[1] )
         num_letter = len( self.word_to_find )
         self.correctly_guessed_letters = list( num_letter * '_' )
+        # COACHES' NOTE: 1 -> True
         while 1:
             self.play()
             print( self.correctly_guessed_letters )
@@ -55,3 +56,5 @@ class Hangman():
 
     def well_played(self):
         print( f"You found the word: {self.word_to_find} in {self.turn_count} turns with {self.error_count} errors!" )
+
+# COACHES' NOTE: Good job overall, nice implementation of OOP concepts.
